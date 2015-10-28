@@ -1,5 +1,5 @@
 ﻿angularFormsApp.controller("efController",
-    function efController($scope, $window, $routeParams, $modalInstance, DataService) {
+    function efController($scope, $window, $routeParams,  DataService) {
         
         if ($routeParams.id ) {
             $scope.employee = DataService.getEmployee($routeParams.id);
@@ -9,7 +9,14 @@
         }
         //$scope.employee = DataService.employee;
         $scope.editableEmployee = angular.copy($scope.employee);
-        $scope.departments = ["Engineering", "Marketing", "Finance", "Administration", "MIS"];
+        $scope.departments = ["Engineering", "Marketing", "Finance", "Administration", "Software Development"];
+        $scope.ProgrammingLanguages = ["C", "C++", "C#", "Python", "PHP", "Java", "Javascript", "Ruby On Rails", "VB.Net", "Other"];
+
+        $scope.hoveringOver = function (value) {
+            $scope.overStar = value;
+            $scope.percent = (value / 10) * 100;
+
+        }
         $scope.submitForm = function () {
             if ($scope.editableEmployee.id == 0) {
                 DataService.insertEmployee($scope.editableEmployee);

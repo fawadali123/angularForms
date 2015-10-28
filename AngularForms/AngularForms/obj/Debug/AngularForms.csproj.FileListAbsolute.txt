@@ -3,3 +3,4 @@ E:\MVC\AngularForms\AngularForms\AngularForms\bin\AngularForms.dll
 E:\MVC\AngularForms\AngularForms\AngularForms\bin\AngularForms.pdb
 E:\MVC\AngularForms\AngularForms\AngularForms\obj\Debug\AngularForms.dll
 E:\MVC\AngularForms\AngularForms\AngularForms\obj\Debug\AngularForms.pdb
+E:\MVC\AngularForms\AngularForms\AngularForms\obj\Debug\AngularForms.csprojResolveAssemblyReference.cache
