@@ -2,16 +2,29 @@
     <h1 class="modal-title">Create New Employee</h1>
 </div>
 <div class="modal-body">
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" name="employeeForm" role="form">
         <fieldset>
             <legend>Basic Information</legend>
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error':employeeForm.fullName.$invalid && employeeForm.fullName.$dirty}">
                 <label for="fullName" class="col-sm-3 control-label">Name</label>
                 <div class="col-sm-9">
                     <input type="text" id="fullName" name="fullName" class="form-control"
-                           ng-model="editableEmployee.fullName" />
+                           ng-model="editableEmployee.fullName" ng-required="true" />
+                    <span class="help-block" ng-show="employeeForm.fullName.$error.required && employeeForm.fullName.$dirty">Full Name is required.</span>
                 </div>
             </div>
+
+            <div class="form-group" show-errors >
+                <label for="email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" id="email" name="email" class="form-control" ng-minlength="10" ng-maxlength="15"
+                           ng-model="editableEmployee.email" ng-required="true" />
+                    <span class="help-block hide" ng-if="employeeForm.email.$error.required">A valid email id required.</span>
+                    <span class="help-block hide" ng-if="employeeForm.email.$error.ra">Length must be in range.</span>
+
+                </div>
+            </div>
+
 
             <div class="form-group">
                 <label for="notes" class="col-sm-3 control-label">Notes</label>

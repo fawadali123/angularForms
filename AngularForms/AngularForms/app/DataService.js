@@ -10,6 +10,7 @@
                 dateHired: "July 17 2014",
                 breakTime: "July 17 2014 4:18 PM",
                 topProgrammingLanguage: "C",
+                email:"fawad.ali@nxb.com.pk",
                 isUnderNonCompete: true,
                 nonCompeteNotes:"Some non compete notes about empoyee contract",
                 interviewRating: 8,
