@@ -5,22 +5,24 @@
     <form class="form-horizontal" name="employeeForm" role="form">
         <fieldset>
             <legend>Basic Information</legend>
-            <div class="form-group" ng-class="{'has-error':employeeForm.fullName.$invalid && employeeForm.fullName.$dirty}">
+            <!--<div class="form-group" ng-class="{'has-error':employeeForm.fullName.$invalid && employeeForm.fullName.$dirty}">-->
+            
+            <div class="form-group"  show-errors>
                 <label for="fullName" class="col-sm-3 control-label">Name</label>
                 <div class="col-sm-9">
-                    <input type="text" id="fullName" name="fullName" class="form-control"
-                           ng-model="editableEmployee.fullName" ng-required="true" />
-                    <span class="help-block" ng-show="employeeForm.fullName.$error.required && employeeForm.fullName.$dirty">Full Name is required.</span>
+                    <input type="text" id="fullName" name="fullName" class="form-control" ng-model="editableEmployee.fullName" ng-required="true" ng-minlength="5" ng-maxlength="10" ng-pattern="/^p/" />
+                    <span class="help-block" ng-if="employeeForm.fullName.$error.required">Full Name is required.</span>                    
+                    <span class="help-block" ng-if="employeeForm.fullName.$error.minlength || employeeForm.fullName.$error.maxlength">Value must be within range.</span>                    
+                    <span class="help-block" ng-if="employeeForm.fullName.$error.pattern">Name must start with letter p.</span>             
                 </div>
             </div>
 
             <div class="form-group" show-errors >
                 <label for="email" class="col-sm-3 control-label">Email</label>
                 <div class="col-sm-9">
-                    <input type="email" id="email" name="email" class="form-control" ng-minlength="10" ng-maxlength="15"
-                           ng-model="editableEmployee.email" ng-required="true" />
-                    <span class="help-block hide" ng-if="employeeForm.email.$error.required">A valid email id required.</span>
-                    <span class="help-block hide" ng-if="employeeForm.email.$error.ra">Length must be in range.</span>
+                    <input type="email" id="email" name="email" class="form-control" ng-model="editableEmployee.email" ng-required="true" />
+                    <span class="help-block" ng-if="employeeForm.email.$error.required">A valid email id required.</span>
+                    
 
                 </div>
             </div>
@@ -161,5 +163,7 @@
     <div class="col-sm-offset-3 col-sm-9">
         <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancelForm()" />
         <input type="submit" class="btn btn-primary" value="Submit" ng-click="submitForm()" />
+
+        <input type="reset" class="btn btn-warning" value="Reset" ng-click="resetForm()" />
     </div>
 </div>
